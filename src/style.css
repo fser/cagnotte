@@ -1,0 +1,21 @@
+p, div, span { color: #008080; }
+body {
+    background-color:  #daf1f1;
+    font-family: "Times New Roman", Georgia, Serif;
+}
+span#total { font-size: 5em; }
+div#content {
+    padding: 15px;
+    width: 500px;
+    margin: auto;
+    margin-top: 100px;
+    box-shadow: -10px 10px 15px #888888; 
+    background-color: #ccf2ff;
+}
+
+form { width: 80%; margin: 0 auto; }
+label, input { display: inline-block; }
+label { width: 30%; text-align: right; }
+label + input { width: 30%; margin: 0 30% 0 4%; }
+input + input { float: right; }
+span#res { text-align: center; }

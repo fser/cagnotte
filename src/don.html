@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Cadeau Mickey</title>
+  <meta name="description" content="Collecte de sous pour faire un cadeau à Jeanne">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="content">
+    <form method="POST" action="don.php" id="don">
+	  <label for="">Je suis:</label>
+      <input type="text" name="nom" id="name" /><br />
+	  <label for="">Mon mail:</label>
+      <input type="email" name="email" id="email" /><br />
+	  <label for="">Je donne:</label>
+      <input type="text" name="montant" placeholder="xxx &euro;" id="montant" /><br />
+      <p style="text-align: center">
+        <img src="./captcha.php" id="cp" />
+        <img id="reload" src="refresh-records-btn.png" alt="reload" />
+      </p>
+	  <label for="">Le captchat est:</label>
+      <input type="text" name="captcha" id="captcha" /><br />
+	  <input type="submit" value="je donne!" />
+    </form>
+    <script src="jquery.js"></script>
+    <script>
+      $('#reload').click(function() {
+        $('img#cp').attr('src', 'captcha.php?'+new Date().getTime());
+      });
+
+      $('#don').submit(function(evt) {
+         evt.preventDefault();
+         var $form = $( this ),
+         email = $form.find( "input[name='email']" ).val(),
+         nom = $form.find( "input[name='nom']" ).val(),
+         montant = $form.find( "input[name='montant']" ).val(),
+         captcha = $form.find( "input[name='captcha']" ).val();
+         
+         url = $form.attr( "action" );
+         
+      $.post( url,
+              { email: email, nom: nom, montant: montant, captcha: captcha }, 
+      function( data ) {
+         if (data.code == 200)
+         {
+            $("#res").empty().append('Merci pour votre contribution!<br /><a href="./">Retour</a>');
+            $('img#cp').attr('src', 'captcha.php?'+new Date().getTime());
+         }
+         else
+         {
+            $( "#res" ).empty().append( data.msg );
+            $('img#cp').attr('src', 'captcha.php?'+new Date().getTime());
+         }
+      },
+      'json' );
+
+      });
+    </script>
+    <span id="res"></span>
+  </div>
+</body>
+</html>
+
+

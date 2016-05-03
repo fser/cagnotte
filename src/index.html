@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Cadeau Mickey</title>
+  <meta name="description" content="Collecte de sous pour faire un cadeau à Jeanne">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="content">
+    <span style="font-size: 10em; ">€</span>
+    <span id="total">total</span>
+
+    <p><a href="don.html">Je veux donner!</a></p>
+  </div>
+  <script src="jquery.js"></script>
+  <script>
+    var update_total = function() {
+        $.getJSON("./total.php",
+                  function (data) {
+                      $('span#total').html(data.msg);
+                  }
+        );
+    };
+    setInterval(update_total, 1000 * 60);
+    update_total();
+  </script>
+</body>
+</html>
