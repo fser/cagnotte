@@ -30,7 +30,7 @@ for ($i=0; $i<50; $i++){
     imagesetpixel($img,rand()%CAPTCHA_WIDTH,rand()%CAPTCHA_HEIGHT,$graphic_color);
 }
 //Написание строки содержащей идентификационную фразу
-imagettftext($img,18,0,5,CAPTCHA_HEIGHT -5,$text_color,"/var/alternc/html/f/fser/www/fser.lautre.net/mickey/font.ttf", $pass_phrase);
+imagettftext($img,18,0,5,CAPTCHA_HEIGHT -5,$text_color,dirname(__FILE__) . "/font.ttf", $pass_phrase);
 //Вывод изображения в формате PNG с помощью HTTP-заголовка
 header("Content-type:image/png");
 imagepng($img);
