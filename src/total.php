@@ -11,7 +11,7 @@ try
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sth = $conn->prepare('SELECT sum(montant) AS total FROM `mickey`');
+    $sth = $conn->prepare('SELECT sum(montant) AS total FROM `dons`');
     $sth->execute();
     $total = $sth->fetch();
 

@@ -26,7 +26,7 @@ try
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->exec("SET CHARACTER SET utf8");
-    $sth = $conn->prepare('SELECT * FROM `mickey`');
+    $sth = $conn->prepare('SELECT * FROM `dons`');
     $sth->execute();
     
     foreach ($sth->fetchAll() AS $row)

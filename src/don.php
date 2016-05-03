@@ -17,7 +17,7 @@ function add_stuff($nom, $mail, $montant)
 	    $conn = new PDO($uri, $wo['user'], $wo['pass']);
 	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
-	    $sth = $conn->prepare('INSERT INTO `mickey` (nom, mail,montant) VALUES(?,?,?)');
+	    $sth = $conn->prepare('INSERT INTO `dons` (nom, mail,montant) VALUES(?,?,?)');
 	    $sth->execute(array($nom, $mail, $montant));
 	}
 	catch(PDOException $e)
