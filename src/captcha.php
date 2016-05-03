@@ -1,4 +1,7 @@
 <?php
+
+/* Source: https://gist.github.com/DimVechorko/cb0cc92bc40779f42632 */
+
 session_start();
 define('CAPTCHA_WIDTH',100);
 define('CAPTCHA_HEIGHT',25);
